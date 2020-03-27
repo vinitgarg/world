@@ -1,0 +1,6 @@
+projectKey=com.nagarro:firstmvn
+serverUrl=http://localhost:9000
+serverVersion=8.2.0.32929
+dashboardUrl=http://localhost:9000/dashboard?id=com.nagarro%3Afirstmvn
+ceTaskId=AXEapIgLQ1vVvdH94O3p
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXEapIgLQ1vVvdH94O3p
