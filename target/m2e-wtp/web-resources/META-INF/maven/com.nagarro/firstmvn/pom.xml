@@ -15,7 +15,8 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+  
   <build>
-    <finalName>firstmvn</finalName>
+       <finalName>firstmvn</finalName>
   </build>
 </project>
