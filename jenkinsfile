@@ -23,8 +23,43 @@ pipeline{
                                      bat 'mvn test'
                                   }
                             }
-                     }       
-                            
+                    
+                          stage('SonarQube Analysis')
+                          {
+                              steps{
+                                     withSonarQubeEnv('sonarqube')
+                                     {
+                                     bat 'mvn sonar:sonar -Dsonar.projectKey=Pipeline_1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=276c279e5495d759328a6798528deb8d3b411b2d'        
+                    
+                    `                }
+                                  }
+                             }
+                             
+                             stage('Artifact Deploy'){
+                                         steps{
+                                           rtServer{
+                                                   id: 'artifactory',
+                                                   url: 'http://localhost:8081/artifactory',
+                                                   username: 'admin',
+                                                     password: 'password'
+                                                   }  
+                                         rtUpload{
+                                             serverId: 'artifactory',
+                                            spec: '''{
+                                               "files": [
+                                                           {
+                                                            "pattern": ".war",
+                                                          "target": "my"
+                                                            }
+                                                         ]
+                                                     }"""
+                                                   }
+                                                 }   
+                             }
+                           
+                     }
+                        
+                              
                             
         }
                                 
