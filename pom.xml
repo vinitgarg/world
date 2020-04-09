@@ -15,7 +15,15 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-  
+   
+   <distributionManagement>
+        <snapshotRepository>
+             <id>snapshot</id>
+             <name>DESKTOP-U44A200-snapshots</name>
+             <url>http://localhost:8081/artifactory/my/</url>
+        </snapshotRepository>
+   </distributionManagement> 
+   
   <build>
        <finalName>firstmvn</finalName>
   </build>
