@@ -44,7 +44,7 @@ pipeline{
                                                "files": [
                                                            {
                                                             "pattern": ".war",
-                                                          "target": "my"
+                                                          "target": "http://localhost:8081/artifactory/my"
                                                             }
                                                          ]
                                                      }"""
