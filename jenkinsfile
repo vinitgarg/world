@@ -39,11 +39,11 @@ pipeline{
                                          steps{
                                           
                                            rtUpload{
-                                             serverId: 'artifactory',
+                                             serverId: 'Artifactory',
                                             spec: '''{
                                                "files": [
                                                            {
-                                                            "pattern": ".war",
+                                                            "pattern": "/**.war",
                                                           "target": "http://localhost:8081/artifactory/my"
                                                             }
                                                          ]
