@@ -16,18 +16,7 @@
     </dependency>
   </dependencies>
    
-   <distributionManagement>
-    <repository>
-        <id>central</id>
-        <name>vinitgarg-releases</name>
-        <url>http://localhost:8081/artifactory/my</url>
-    </repository>
-    <snapshotRepository>
-        <id>snapshots</id>
-        <name>vinitgarg-snapshots</name>
-        <url>http://localhost:8081/artifactory/my</url>
-    </snapshotRepository>
-</distributionManagement>
+  
    
   <build>
        <finalName>firstmvn</finalName>
