@@ -4,6 +4,14 @@ pipeline{
                    maven 'Maven'
                   }
              stages {
+             
+                    stage("Code Checkout") {
+                                steps {
+                                       git url: 'https://github.com/vinitgarg/world.git'
+                                      }
+                                     }
+             
+             
                       stage("Build Stage"){
                          steps{
                                  bat 'mvn package'
@@ -24,12 +32,12 @@ pipeline{
                                   }
                             }
                     
-                          stage('SonarQube Analysis')
+                          stage('Build & SonarQube Analysis')
                           {
                               steps{
                                      withSonarQubeEnv('sonarqube')
                                      {
-                                     bat 'mvn sonar:sonar -Dsonar.projectKey=Pipeline_1 -Dsonar.host.url=http://localhost:9000 -Dsonar.login=276c279e5495d759328a6798528deb8d3b411b2d'        
+                                     bat 'mvn clean package sonar:sonar'        
                     
                                        }
                                   }
@@ -37,19 +45,10 @@ pipeline{
                              
                              stage('Artifact Deploy'){
                                          steps{
-                                          
-                                           rtUpload{
-                                             serverId: 'Artifactory',
-                                            spec: '''{
-                                               "files": [
-                                                           {
-                                                            "pattern": "/**.war",
-                                                          "target": "http://localhost:8081/artifactory/my"
-                                                            }
-                                                         ]
-                                                     }"""
-                                                   }
-                                                 }   
+                                      rtServer (id: 'artifactory',url: 'http://localhost:8040/artifactory',username: 'admin',password: 'nardev.k1')
+                                      rtUpload (serverId: 'artifactory',spec: '''{"files": [{ "pattern": "/**.war","target": "maven_artifact/"}]}''')
+                                      }
+                                     }
                              }
                            
                      }
