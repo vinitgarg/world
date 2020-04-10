@@ -32,16 +32,7 @@ pipeline{
                                   }
                             }
                     
-                          stage('Build & SonarQube Analysis')
-                          {
-                              steps{
-                                     withSonarQubeEnv('sonar')
-                                     {
-                                     bat 'mvn clean package sonar:sonar'        
-                    
-                                       }
-                                  }
-                             }
+                        
                              
                              stage('Artifact Deploy'){
                                          steps{
