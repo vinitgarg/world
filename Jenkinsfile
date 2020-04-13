@@ -43,7 +43,7 @@ tools{
                                      
                   stage('Deploy to tomcat'){
                                 steps{
-                                       bat "copy target\\Pipeline_1.war \'C:\\Users\\vinitgarg\\apache-tomcat-8.5.51\\webapps'"
+                                       bat "copy target\\firstmvn.war \'C:\\Users\\vinitgarg\\apache-tomcat-8.5.51\\webapps'"
                                      }
                                    }
              
