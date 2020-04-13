@@ -29,15 +29,15 @@ tools{
                                     }
               stage('build && SonarQube analysis'){
                                 steps {
-                                       withSonarQubeEnv('sonar') {
+                                       withSonarQubeEnv('Sonarqube') {
                                                                      bat 'mvn clean package sonar:sonar'
                                                                  } 
                                       } 
                                     }
               stage('Deploy artifact'){
                                 steps{
-                                      rtServer (id: 'artifactory',url: 'http://localhost:8081/artifactory',username: 'admin',password: 'password')
-                                      rtUpload (serverId: 'artifactory',spec: '''{"files": [{ "pattern": "/**.war","target": "maven_artifact/"}]}''')
+                                      rtServer (id: 'Artifactory',url: 'http://localhost:8081/artifactory',username: 'admin',password: 'password')
+                                      rtUpload (serverId: 'Artifactory',spec: '''{"files": [{ "pattern": "/**.war","target": "maven_artifact/"}]}''')
                                       }
                                      }
              
