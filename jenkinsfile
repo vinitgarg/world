@@ -40,6 +40,12 @@ tools{
                                       rtUpload (serverId: 'Artifactory',spec: '''{"files": [{ "pattern": "/**.war","target": "maven_artifact/"}]}''')
                                       }
                                      }
+                                     
+                  stage('Deploy to tomcat'){
+                                steps{
+                                       bat "copy target\\.war \'C:\Users\vinitgarg\apache-tomcat-8.5.51\webapps'"
+                                     }
+                                   }
              
                                  }
 }
